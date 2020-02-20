@@ -72,6 +72,25 @@ public class TaskActivity extends AppCompatActivity {
                 }
             }
         });
+        Button buttonPrev = findViewById(R.id.buttonPrev);
+        buttonPrev.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if ( sTaskRepository.isLast(mTask)) {
+
+                    Toast toast = Toast.makeText(
+                            getApplicationContext(),
+                            "Previous Task",
+                            Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+
+                } else {
+                    mTask = sTaskRepository.getPrevTask(mTask);
+                    updateUI();
+                }
+            }
+        });
 
     }
 

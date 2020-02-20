@@ -48,6 +48,22 @@ public class TaskRepository {
         return mTasks.get(nextTaskId);
 
     }
+    public Task getPrevTask(Task task) {
+
+        int currentTaskId = task.getId();
+        int nextTaskId = 0;
+
+        if (currentTaskId < mTasks.size() - 1){
+            nextTaskId = currentTaskId - 1;
+        } else  if (currentTaskId == mTasks.size() - 1){
+            nextTaskId = currentTaskId;
+        } else {
+            Log.d(TAG, "getNextTask: currentTaskId out of bound, reset to 0!");
+        }
+
+        return mTasks.get(nextTaskId);
+
+    }
 
     public boolean isLast(Task mTask) {
         return mTask.getId() == mTasks.size() - 1;
